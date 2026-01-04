@@ -22,6 +22,7 @@ export default function BasicsEditor() {
             <Label>Nama Lengkap</Label>
             <Input
               placeholder="Contoh: Budi Santoso"
+              value={basics.fullName}
               onChange={(e) =>
                 setData((p) => ({
                   ...p,
@@ -73,7 +74,21 @@ export default function BasicsEditor() {
             />
           </div>
 
-          <div className="md:col-span-2">
+          <div>
+            <Label>LinkedIn</Label>
+            <Input
+              placeholder="Contoh: linkedin.com/in/igarama atau igarama"
+              value={basics.linkedin ?? ""}
+              onChange={(e) =>
+                setData((p) => ({
+                  ...p,
+                  basics: { ...p.basics, linkedin: e.target.value },
+                }))
+              }
+            />
+          </div>
+
+          <div>
             <Label>Domisili</Label>
             <Input
               placeholder="Contoh: Jakarta, Indonesia"
@@ -86,20 +101,21 @@ export default function BasicsEditor() {
               }
             />
           </div>
-        </div>
 
-        <div>
-          <Label>Ringkasan</Label>
-          <Textarea
-            placeholder="Contoh: Frontend Engineer dengan 3+ tahun pengalaman membangun aplikasi web, fokus pada performa, aksesibilitas, dan DX..."
-            className="min-h-[110px]"
-            onChange={(e) =>
-              setData((p) => ({
-                ...p,
-                basics: { ...p.basics, summary: e.target.value },
-              }))
-            }
-          />
+          <div className="md:col-span-2">
+            <Label>Ringkasan</Label>
+            <Textarea
+              placeholder="Contoh: Frontend Engineer dengan 3+ tahun pengalaman membangun aplikasi web..."
+              className="min-h-[110px]"
+              value={basics.summary ?? ""}
+              onChange={(e) =>
+                setData((p) => ({
+                  ...p,
+                  basics: { ...p.basics, summary: e.target.value },
+                }))
+              }
+            />
+          </div>
         </div>
       </CardContent>
     </Card>

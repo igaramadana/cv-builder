@@ -12,9 +12,9 @@ export const ResumeSchema = z.object({
     location: z.string().optional().default(""),
     summary: z.string().optional().default(""),
     links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
-
-    // foto base64/dataURL
     photo: z.string().optional().default(""),
+    linkedin: z.string().optional().default(""),
+
   }),
 
   experience: z
@@ -49,8 +49,6 @@ export const ResumeSchema = z.object({
 
   sectionOrder: z.array(SectionIdSchema).default(["summary", "experience", "education", "skills"]),
   template: z.enum(["one", "two"]).default("one"),
-
-  // ✅ STEP 4: zoom untuk preview (60–140)
   zoom: z.number().min(60).max(140).default(100),
 });
 
@@ -66,13 +64,12 @@ export const defaultResume: ResumeData = {
     summary: "",
     links: [],
     photo: "",
+    linkedin: "",
   },
   experience: [],
   education: [],
   skills: [],
   sectionOrder: ["summary", "experience", "education", "skills"],
   template: "one",
-
-  // ✅ STEP 4 default zoom
   zoom: 100,
 };
