@@ -1,42 +1,94 @@
 @media print {
-  /* Sembunyikan semua */
+  /* =============================
+     VISIBILITY CONTROL
+     ============================= */
   body * {
     visibility: hidden !important;
   }
 
-  /* Tampilkan hanya print-area */
   #print-area,
   #print-area * {
     visibility: visible !important;
   }
 
-  /* Pindahkan ke posisi normal saat print */
   #print-area {
-    position: fixed !important;
-    left: 0 !important;
-    top: 0 !important;
+    position: static !important;
     width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
 
-    background: white !important;
-    color: black !important;
+    background: #fff !important;
+    color: #000 !important;
   }
 
-  /* Matikan transform zoom saat print (untuk preview wrapper kalau ikut kebawa) */
-  .cv-zoom {
-    transform: none !important;
+  /* =============================
+     HILANGKAN EFEK UI
+     ============================= */
+  .shadow,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg {
+    box-shadow: none !important;
   }
 
+  .rounded,
+  .rounded-md,
+  .rounded-lg,
+  .rounded-xl {
+    border-radius: 0 !important;
+  }
+
+  .border {
+    border: none !important;
+  }
+
+  .bg-background,
+  .bg-white,
+  .bg-neutral-50,
+  .bg-neutral-100 {
+    background: transparent !important;
+  }
+
+  /* =============================
+     FONT & TYPOGRAPHY
+     ============================= */
   html,
   body {
+    background: #fff !important;
+    color: #000 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+
     height: auto !important;
     overflow: visible !important;
-    background: white !important;
+
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
+  /* Wrapper template */
+  .resume-page {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hindari terpotong */
+  section,
+  li {
+    page-break-inside: avoid;
+  }
+
+  /* =============================
+     MARGIN HALAMAN (PENTING)
+     ============================= */
   @page {
     size: A4;
-    margin: 12mm;
+
+    /* Margin ramping tapi aman */
+    margin: 10mm 12mm;
+    /* atas-bawah: 10mm, kiri-kanan: 12mm */
   }
 }
